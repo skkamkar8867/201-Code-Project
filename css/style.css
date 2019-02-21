@@ -3,9 +3,10 @@
 }
 
 p {
-  width: 100px;
+  text-indent: 10px;
+  width: 200px;
   height: 100px;
   color: red;
-  outline: dotted 1px orange;
+  outline: dotted 5px orange;
 
 }
