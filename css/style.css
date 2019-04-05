@@ -1,12 +1,46 @@
-#title {
-    text-decoration: underline;
+body { 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+  }
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #8126d6;
+    padding-top: 0.3in;
+    text-align: center;
 }
-
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding: 0.1in;
+    color: #000000;
+    
+}
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 0.1in;
+    color: #000000;
+    
+}
 p {
-  text-indent: 10px;
-  width: 200px;
-  height: 100px;
-  color: red;
-  outline: dotted 5px orange;
-
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    padding: 0.1in;
+    text-align: center;
 }
+footer {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #000000;
+    text-align: center;
+  }
