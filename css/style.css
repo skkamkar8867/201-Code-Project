@@ -13,25 +13,23 @@ h1 {
 }
 h2 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     padding: 0.1in;
     color: #000000;
     
 }
 h3 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
+    font-size: 18px;
     padding: 0.1in;
     color: #000000;
     
 }
 p {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 16px;
     color: #000000;
     padding: 0.1in;
-    text-align: center;
 }
 footer {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Helvetica, sans-serif;

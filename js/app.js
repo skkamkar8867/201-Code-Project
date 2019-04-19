@@ -1,55 +1,98 @@
 "use strict";
-var correctflag;
-var name = getUserInput('What is your name?')
-alert('Welcome to Guessing game about me');
-var attempt = 0
-var readyflag = getUserInput('Are you ready to play guessing game about me?')
-checkreadyflag(readyflag);
-var married = getUserInput('Am i married');
-checkmarried(married);
-var kid = getUserInput('Do you think i have kid');
-checkkid(kid);
-var age = getUserInput('Can you guess my age');
-checkage(age);
+var input;
+var attempt = 0;
+var totQuestions = 3;
+var correctAnswers = 0;
+var expectedvalue1 = 'y';
+var expectedvalue2 = 'yes';
+var expectedvalue3 = 'no';
+var expectedvalue4 = 'n';
 
-alert('Game Over!!!');
+input = getUserInput('What is your name?')
+console.log('Name : '+input);
+//checkName(input);
+
+if(checkName(input) !== null){
+input = getUserInput('Are you ready to play guessing game about me?')
+console.log('Ready to play : '+input);
+//checkreadyflag(input);
+
+if(checkreadyflag(input) !== null){
+input = getUserInput('Am i married');
+console.log('Married : '+input);
+//checkmarried(input);
+
+if(checkmarried(input) !== null){
+input = getUserInput('Do you think i have kid');
+console.log('Kid : '+input);
+//checkkid(input);
+if(checkkid(input) !== null){
+input = getUserInput('Can you guess my age. Hint: Enter number between 30 to 40');
+console.log('Age : '+input);
+checkage(input);
+
+alert('Game Over!!!'+'\n You have given '+ correctAnswers + ' correct answers out of ' + totQuestions + ' questions' );
+}
+}
+}
+else
+alert('You have exited the game. Thank You!.');
+}
+else
+  alert('You have closed the window.');
+
+function checkName(name){
+if(name === null)return null;
+
+if(name === ''){
+alert('Please enter the name.');
+input = getUserInput('What is your name?');
+checkName(input);
+}
+else{
+alert('Hello '+ name +'\n Welcome to Guessing game about me');
+}
+}
 
 
 /* The function checks if user is interested in playing */
 function checkreadyflag(readyflag) {
-	readyflag = readyflag.toLowerCase();
-	var expectedvalue1 = 'y';
-	var expectedvalue2 = 'yes';
-	if (readyflag === null) {
-		alert('No User Input. Thanking for Playing')
-	}
-	else if (readyflag === expectedvalue1 || readyflag === expectedvalue2) {
+     if(readyflag === null)
+        return null;
+     
+    readyflag = readyflag.toLowerCase();    
+	if (readyflag === expectedvalue1 || readyflag === expectedvalue2) {
 		alert('HOOOO!! Lets play the game');
 	}
-	else {
-		alert('Please enter yes or y to play game');
-	}
+    else if(readyflag === expectedvalue3 || readyflag === expectedvalue4){
+        return null;
+    }
+	else {    
+		alert('Please enter YES/NO or Y/N to play a game');
+        var readyflag = getUserInput('Are you ready to play guessing game about me?')
+        checkreadyflag(readyflag);
+    }
 }
 
 
 /* The function checks validates the age provided by user */
 function checkage(age) {
 	var correctage = '32';
-
-	if (age === null) {
-		alert('No User Input. Thanking for Playing')
-	}
-	else if (age > 32) {
-		alert('Try lesser number')
+    if(age === null) 
+       return null;
+    if (age > 32) {
+		alert('Try lesser number');
+        attempt = attempt + 1;
 		verifyage();
 	}
 	else if (age < 32) {
-		alert('Try higher number')
+		alert('Try higher number');
+        attempt = attempt + 1;
 		verifyage();
 	}
 	else if (age === correctage) {
 		alert('Congratulations!! ' + age + ' is correct answer.');
-		correctflag = 'Y';
+        correctAnswers++;
 	}
 	else {
 		alert('Ops!! ' + age + ' is incorrect answer.Please try the game again');
@@ -57,41 +100,54 @@ function checkage(age) {
 }
 
 function verifyage() {
-	if (correctflag === 'Y' || attempt === 4) { return; }
+	if (attempt === 4) { return; }
 	else
-		getage();
+    {
+	var age = getUserInput('Can you guess my age');
+    checkage(age);
+    }
 }
 
 
 
 /* The function checks validates the age provided by user */
 function checkmarried(married) {
-	married = married.toLowerCase();
-	var expectedvalue3 = 'y';
-	var expectedvalue4 = 'yes';
 
-	if (married === null) {
-		alert('No User Input. Thanking for Playing')
-	}
-	else if (married === expectedvalue3 || married === expectedvalue4) {
+if(married === null) return null;
+	married = married.toLowerCase();
+	
+
+	if (married === expectedvalue1 || married === expectedvalue2) {
 		alert('Congratulations!! your is answer is correct');
+        correctAnswers++;
 	}
+    else if(married === expectedvalue3 || married === expectedvalue4){
+        alert('Ops!! that is incorrect answer');
+    }
 	else {
-		alert('Ops!! that is incorrect answer');
+        alert('Please enter YES/NO or Y/N.');
+        var married = getUserInput('Am i married');
+        checkmarried(married);
 	}
 }
 
 /* The function checks validates the age provided by user */
 function checkkid(kid) {
-	var correctkid = 'y';
-	if (kid === null) {
-		alert('No User Input. Thanking for Playing')
-	}
-	else if (kid === correctkid) {
+    if(kid === null)
+    return null;
+    
+    var kid = kid.toLowerCase();
+	if (kid === expectedvalue3 || kid === expectedvalue4) {
 		alert('Congratulations!! your is answer is correct');
+        correctAnswers++;
 	}
+    else if(kid === expectedvalue1 || kid === expectedvalue2){
+        alert('Ops!! that is incorrect answer');
+    }
 	else {
-		alert('Ops!! that is incorrect answer');
+		alert('Please enter YES/NO or Y/N.');
+        var kid = getUserInput('Do you think i have kid');
+        checkkid(kid);
 	}
 }
 
